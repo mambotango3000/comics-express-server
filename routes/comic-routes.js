@@ -1,14 +1,22 @@
-var path = require('path');
-var comics = require('../controllers/controller-static');
-var comicsDb = require('../controllers/controller-db');
-var fs = require('fs');
+var express = require('express');
 
-module.exports = function (app) {
-    app.get('/lib/comics/:id', comics.get);
-    app.get('/lib/comics', comics.getAll);
-    app.post('/lib/comics', comics.save);
-    app.delete('/lib/comics/:id', comics.deleteComic);
-    app.get('/', function(req, res) {
-        res.send('Welcome.');
-    });
-}
+var routes = function(Comic) {
+    var comicRouter = express.Router();
+    var comicsController = require('../controllers/controller-static');
+
+    /*Plugin for the controller above when implemented.
+    var comicsController = require('../controllers/comicsController')(Comic);*/
+
+    comicRouter.route('/')
+        .get(comicsController.getAll)
+        .post(comicsController.save);
+
+    comicRouter.route('/:id')
+        .get(comicsController.get)
+        .delete(comicsController.deleteComic);
+
+    return comicRouter;
+
+};
+
+module.exports = routes;
