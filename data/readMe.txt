@@ -1,1 +1,1 @@
-folder exist for testing with static files.
+folder exists for testing with static files.
