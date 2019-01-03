@@ -1,1 +1,1 @@
-Temporary file storage of comic objects for development. To be replaced by DBMS.
+folder exist for testing with static files.

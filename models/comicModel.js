@@ -1,7 +1,6 @@
-var mongoose = require('mongoose'),
-    Schema = mongoose.Schema;
+var mongoose = require('mongoose');
 
-var comicModel = new Schema({
+var comicModel = mongoose.Schema({
     aliases: {
         type: String
     },
