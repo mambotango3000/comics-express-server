@@ -1,4 +1,4 @@
-/* NOT IN USE */
+var fetch = require('node-fetch');
 
 var comicsController = function (Comic) {
 
@@ -34,7 +34,7 @@ var comicsController = function (Comic) {
             else if (comic) {
                 res.json(comic);
             } else {
-                res.status(404).send('no comic found');
+                res.status(404).send('No comic found');
             }
         });
     };
@@ -64,13 +64,31 @@ var comicsController = function (Comic) {
         });
     };
 
+    var searchForIssues = function (req, result) {
+
+        var apiKey = "?api_key=175d0376cf76c1545407d36174abeef59448a72d";
+        var baseUrl = "https://comicvine.gamespot.com/api/";
+        var parameters = "&format=json&sort=cover_date:asc&resources=issue&limit=20&query=";
+
+        console.log('searchForIssues:' + req.params.term);
+
+        fetch(baseUrl + 'search/' + apiKey + parameters + req.params.term)
+            .then(res => res.json())
+            .then(json => {
+                console.log('results: ');
+                console.log(json.results);
+                result.send(json.results);
+            });
+    };
+
 
 
     return {
         getAll: getAll,
         save: save,
         deleteComic: deleteComic,
-        get: get
+        get: get,
+        searchForIssues: searchForIssues
     };
 
 }

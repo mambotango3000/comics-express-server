@@ -15,7 +15,7 @@ app.use(bodyParser.json());
 
 comicRouter = require('./routes/comic-routes')(Comic);
 
-app.use('/lib/comics', comicRouter);
+app.use('/', comicRouter);
 
 app.listen(8000);
 console.log('Listening on port ' + 8000 + '...');
