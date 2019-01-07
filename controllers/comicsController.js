@@ -68,7 +68,7 @@ var comicsController = function (Comic) {
 
         var apiKey = "?api_key=175d0376cf76c1545407d36174abeef59448a72d";
         var baseUrl = "https://comicvine.gamespot.com/api/";
-        var parameters = "&format=json&sort=cover_date:asc&resources=issue&limit=20&query=";
+        var parameters = "&format=json&sort=cover_date:asc&resources=issue&limit=100&query=";
 
         console.log('searchForIssues:' + req.params.term);
 
