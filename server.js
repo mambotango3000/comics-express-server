@@ -6,10 +6,9 @@ var cors = require('cors');
 var env = process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
 if(env === 'development') {
-    console.log('developmnet');
     mongoose.connect('mongodb://localhost/comicsApi');
   } else {
-      console.log('production');
+    /*This is a terrible idea*/
     mongoose.connect('mongodb://comicsApp:comicsAppPW1@ds145325.mlab.com:45325/comicsapi');
   }
 
